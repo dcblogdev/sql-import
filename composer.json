@@ -10,9 +10,13 @@
             "role": "Developer"
         }
     ],
+    "require": {
+        "php": ">=7.0.0"
+    },
     "autoload": {
         "psr-4": {
             "Daveismyname\\Import\\": "Import.php"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
