@@ -1,4 +1,4 @@
-<?php
+<?php namespace Daveismyname
 
 /**
  * PDO class to import sql from a .sql file
