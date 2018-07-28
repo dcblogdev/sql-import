@@ -1,5 +1,7 @@
-<?php namespace Daveismyname
+<?php namespace Daveismyname;
 
+use PDO;
+    
 /**
  * PDO class to import sql from a .sql file
  * adapted from thamaraiselvam's import-database-file-using-php class https://github.com/thamaraiselvam/import-database-file-using-php
