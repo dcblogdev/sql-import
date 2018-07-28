@@ -1,5 +1,5 @@
 {
-    "name": "daveismyname/php-import-sql-class",
+    "name": "daveismyname/import-sql",
     "description": "Import .sql file into a database using PDO",
     "license": "MIT",
     "authors": [
