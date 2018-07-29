@@ -1,4 +1,4 @@
-<?php namespace Daveismyname;
+<?php namespace Daveismyname\SqlImport;
 
 use PDO;
     
