@@ -1,5 +1,5 @@
 {
-    "name": "daveismyname/sql-import",
+    "name": "daveismyname/sqlimport",
     "description": "Import .sql file into a database using PDO",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Daveismyname\\Import\\": "/"
+            "Daveismyname\\SqlImport\\": "/"
         }
     },
     "minimum-stability": "dev"
