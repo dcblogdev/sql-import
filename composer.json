@@ -1,5 +1,5 @@
 {
-    "name": "daveismyname/sqlimport",
+    "name": "daveismyname/sql-import",
     "description": "Import .sql file into a database using PDO",
     "license": "MIT",
     "authors": [
