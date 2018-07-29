@@ -24,7 +24,7 @@ use Daveismyname\SqlImport\Import;
 $filename = 'database.sql';
 $username = 'root';
 $password = '';
-$database = 'demo_autocomplete';
+$database = 'sampleproject';
 $host = 'localhost';
 $dropTables = true;
 new Import($filename, $username, $password, $database, $host, $dropTables);
