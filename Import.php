@@ -1,7 +1,10 @@
 <?php namespace Daveismyname\SqlImport;
 
 use PDO;
-    
+use PDOException;
+use Exception;
+use Error;
+
 /**
  * PDO class to import sql from a .sql file
  * adapted from thamaraiselvam's import-database-file-using-php class https://github.com/thamaraiselvam/import-database-file-using-php
@@ -78,10 +81,12 @@ class Import
         //get list of tables
         $tables = $this->query('SHOW TABLES');
 
-        //loop through tables
-        foreach($tables->fetchAll(PDO::FETCH_COLUMN) as $table) {
-            //delete table
-        	$this->query('DROP TABLE `' . $table . '`');
+        if ($tables != null) {
+            //loop through tables
+            foreach($tables->fetchAll(PDO::FETCH_COLUMN) as $table) {
+                //delete table
+            	$this->query('DROP TABLE `' . $table . '`');
+            }
         }
     }
 
