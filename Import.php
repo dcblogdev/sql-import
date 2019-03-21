@@ -17,6 +17,7 @@ class Import
     private $password;
     private $database;
     private $host;
+    private $forceDropTables;
 
     /**
       * instanciate
@@ -25,9 +26,10 @@ class Import
       * @param $password string database password
       * @param $database string database name
       * @param $host string address host localhost or ip address
-      * @param $dropTables boolean When set to true delect the database tables
+      * @param $dropTables boolean When set to true delete the database tables
+      * @param $forceDropTables boolean When set to true foreign key checks will be disabled during deletion
     */
-    public function __construct($filename, $username, $password, $database, $host, $dropTables)
+    public function __construct($filename, $username, $password, $database, $host, $dropTables, $forceDropTables)
     {
         //set the varibles to properties
         $this->filename = $filename;
@@ -35,6 +37,7 @@ class Import
         $this->password = $password;
         $this->database = $database;
         $this->host = $host;
+        $this->forceDropTables = $forceDropTables;
 
         //connect to the datase
         $this->connect();
@@ -83,9 +86,14 @@ class Import
 
         if ($tables != null) {
             //loop through tables
-            foreach($tables->fetchAll(PDO::FETCH_COLUMN) as $table) {
-                //delete table
-            	$this->query('DROP TABLE `' . $table . '`');
+            foreach ($tables->fetchAll(PDO::FETCH_COLUMN) as $table) {
+                if ($this->forceDropTables === true) {
+                    //delete table with foreign key checks disabled
+                    $this->query('SET FOREIGN_KEY_CHECKS=0; DROP TABLE `' . $table . '`; SET FOREIGN_KEY_CHECKS=1;');
+                } else {
+                    //delete table
+                    $this->query('DROP TABLE `' . $table . '`');
+                }
             }
         }
     }
