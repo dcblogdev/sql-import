@@ -27,9 +27,9 @@ class Import
       * @param $database string database name
       * @param $host string address host localhost or ip address
       * @param $dropTables boolean When set to true delete the database tables
-      * @param $forceDropTables boolean When set to true foreign key checks will be disabled during deletion
+      * @param $forceDropTables boolean [optional] When set to true foreign key checks will be disabled during deletion
     */
-    public function __construct($filename, $username, $password, $database, $host, $dropTables, $forceDropTables)
+    public function __construct($filename, $username, $password, $database, $host, $dropTables, $forceDropTables = false)
     {
         //set the varibles to properties
         $this->filename = $filename;
