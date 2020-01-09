@@ -13,9 +13,11 @@ composer require daveismyname/sql-import
 
 Include the composer autoloader, import the Import namespace.
 
-Define your database file path and credentials, the last option `dropTables` when set to true will delete all the tables in the database before import the sql file.
+Define your database file path and credentials, the option `dropTables`, when set to _true_, will __delete all__ the tables in the database before the sql file gets imported.
 
-```
+The option `forceDropTables` is optional and __not recommended__. When enabled together with `dropTables`, the deletion of tables will be executed with disabled foreign key checks. Only use this method if you are sure that the integrity of the existing data in the database does not matter.
+
+```php
 <?php
 require('vendor/autoload.php');
 
@@ -27,5 +29,6 @@ $password = '';
 $database = 'sampleproject';
 $host = 'localhost';
 $dropTables = true;
-new Import($filename, $username, $password, $database, $host, $dropTables);
+$forceDropTables = false;
+new Import($filename, $username, $password, $database, $host, $dropTables, $forceDropTables);
 ```
