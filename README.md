@@ -6,7 +6,7 @@ PDO import sql from a .sql file
 Using composer include the repository by typing the following into a terminal
 
 ```
-composer require daveismyname/sql-import
+composer require dcblogdev/sql-import
 ```
 
 ### Usage
@@ -21,7 +21,7 @@ The option `forceDropTables` is optional and __not recommended__. When enabled t
 <?php
 require('vendor/autoload.php');
 
-use Daveismyname\SqlImport\Import;
+use Dcblogdev\SqlImport\Import;
 
 $filename = 'database.sql';
 $username = 'root';
