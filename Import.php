@@ -1,4 +1,4 @@
-<?php namespace Daveismyname\SqlImport;
+<?php namespace Dcblogdev\SqlImport;
 
 use PDO;
 use PDOException;
