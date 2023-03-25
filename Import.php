@@ -17,6 +17,7 @@ class Import
     private $password;
     private $database;
     private $host;
+    private $port;
     private $forceDropTables;
 
     /**
@@ -28,8 +29,9 @@ class Import
       * @param $host string address host localhost or ip address
       * @param $dropTables boolean When set to true delete the database tables
       * @param $forceDropTables boolean [optional] When set to true foreign key checks will be disabled during deletion
+      * @param $port int [optional] database port, default set to 3306
     */
-    public function __construct($filename, $username, $password, $database, $host, $dropTables, $forceDropTables = false)
+    public function __construct($filename, $username, $password, $database, $host, $dropTables, $forceDropTables = false, $port = 3306)
     {
         //set the varibles to properties
         $this->filename = $filename;
@@ -37,6 +39,7 @@ class Import
         $this->password = $password;
         $this->database = $database;
         $this->host = $host;
+        $this->port = $port;
         $this->forceDropTables = $forceDropTables;
 
         //connect to the datase
@@ -56,7 +59,7 @@ class Import
     */
     private function connect() {
         try {
-            $this->db = new PDO("mysql:host=".$this->host.";dbname=".$this->database, $this->username, $this->password);
+            $this->db = new PDO("mysql:host=".$this->host.";dbname=".$this->database.";port=".$this->port, $this->username, $this->password);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
             echo "Cannot connect: ".$e->getMessage()."\n";
