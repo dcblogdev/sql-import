@@ -22,6 +22,8 @@ Define your database file path and credentials, the option dropTables, when set 
 
 The option forceDropTables is optional and not recommended. When enabled together with dropTables, the deletion of tables will be executed with disabled foreign key checks. Only use this method if you are sure that the integrity of the existing data in the database does not matter.
 
+By default, the MySQL standard port 3306 is used. You can overwrite that via the optional port parameter.
+
 ```php
 use Dcblogdev\SqlImport\Import;
 
@@ -32,6 +34,7 @@ $database = 'sampleproject';
 $host = 'dev';
 $dropTables = true;
 $forceDropTables = false;
+$port = 3307;
 
-new Import($filename, $username, $password, $database, $host, $dropTables, $forceDropTables);
+new Import($filename, $username, $password, $database, $host, $dropTables, $forceDropTables, $port);
 ```
